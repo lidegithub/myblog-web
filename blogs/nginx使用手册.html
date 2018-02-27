@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>nginx使用手册</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+<link rel="shortcut icon" href="assets/images/gt_favicon.png">
+	
+	<!-- Bootstrap -->
+	<link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.no-icons.min.css" rel="stylesheet">
+	<!-- Icon font -->
+	<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+	<!-- Fonts -->
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Alice|Open+Sans:400,300,700">
+	<!-- Custom styles -->
+	<link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<header id="header">
+	<div id="head" class="parallax" parallax-speed="2">
+		<h1 id="logo" class="text-center">
+			<img class="img-circle" src="../assets/images/guy2.jpg" alt="">
+			<span class="title">李德 江西丰城</span>
+			<span class="tagline">To be on the way<br>
+				<a href="">930153267@qq.com</a></span>
+		</h1>
+	</div>
+
+	<nav class="navbar navbar-default navbar-sticky">
+		<div class="container-fluid">
+			
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+			</div>
+			
+			<div class="navbar-collapse collapse">
+				
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="../index.html">首页</a></li>
+					<!--
+					<li><a href="about.html">简介</a></li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">更多信息 <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="sidebar-left.html">左</a></li>
+							<li><a href="sidebar-right.html">右</a></li>
+						</ul>
+					</li>
+					-->
+					<li><a href="../blog.html">博客</a></li>
+				</ul>
+			
+			</div><!--/.nav-collapse -->			
+		</div>	
+	</nav>
+</header>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h1 id="nginx-使用手册">nginx 使用手册</h1>
+<h2 id="常用命令">常用命令</h2>
+<ol>
+<li>windows环境下</li>
+</ol>
+<p>至nginx.exe目录，cmd中执行start nginx</p>
+
+<table>
+<thead>
+<tr>
+<th>功能</th>
+<th>命令</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>启动</td>
+<td>start nginx</td>
+</tr>
+<tr>
+<td>重启</td>
+<td>nginx -s reload</td>
+</tr>
+<tr>
+<td>关闭</td>
+<td>nginx -s stop或者nginx -s quit</td>
+</tr>
+</tbody>
+</table><h2 id="nginx负载均衡">nginx负载均衡</h2>
+<p>一个简单的负载均衡，把ghlp.lidechenyan.club均衡到本机不同的端口</p>
+<pre><code>http {
+	upstream ghlp {
+		server 127.0.0.1:8013 weight=3;
+		server 127.0.0.1:8014;
+	}
+	server {
+        listen       80;
+        server_name  ghlp.lidechenyan.club;
+        location / {
+            root   html;
+            index  index.html index.htm;
+			proxy_pass http://ghlp;
+        }
+	}
+}
+</code></pre>
+<h2 id="nginx反向代理">nginx反向代理</h2>
+<p>实现方式，编辑nginx.conf，配置upstream和location</p>
+<pre><code>server {
+    listen       443 ssl;#监听443端口，并启动ssl
+    server_name  ghlp.lidechenyan.club;#域名设置
+    ssl_certificate      cert.pem;
+    ssl_certificate_key  cert.key;
+    ssl_session_cache    shared:SSL:1m;
+    ssl_session_timeout  5m;
+    ssl_ciphers  HIGH:!aNULL:!MD5;
+    ssl_prefer_server_ciphers  on;
+    location / {
+        root   html;
+        index  index.html index.htm;
+		proxy_pass http://ghlp;#反向代理，ghlp在upstream中设置
+    }
+}
+</code></pre>
+</div>
+</body>
+
+</html>

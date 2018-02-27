@@ -44,15 +44,16 @@
 				
 				<ul class="nav navbar-nav">
 					<li class="active"><a href="index.html">首页</a></li>
+					<!--
 					<li><a href="about.html">简介</a></li>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">更多信息 <b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<li><a href="sidebar-left.html">左</a></li>
 							<li><a href="sidebar-right.html">右</a></li>
-							<li><a href="single.html">博客详情</a></li>
 						</ul>
 					</li>
+					-->
 					<li><a href="blog.html">博客</a></li>
 				</ul>
 			
@@ -73,33 +74,36 @@
 		
 		<div class="row section featured topspace">
 			<h2 class="section-title"><span>我的博文</span></h2>
-			<div class="row">
-				<div class="col-sm-6 col-md-3">
-					<h3 class="text-center">Java进阶初级入门-springboot篇</h3>
-					<p>JavaEE, spring, JAVA基础JVM, shell脚本, redis, mysql, tomcat, nginx, jdk1.8, rocketMQ, nuxes</p>
-					<p class="text-center"><a href="blog.html" class="btn btn-action">更多信息</a></p>
-				</div>
-				<div class="col-sm-6 col-md-3">
-					<h3 class="text-center">Java进阶中级入门-springboot篇</h3>
-					<p></p>
-					<p class="text-center"><a href="" class="btn btn-action">更多信息</a></p>
-				</div>
-				<div class="col-sm-6 col-md-3">
-					<h3 class="text-center">Java进阶高级入门-springboot篇</h3>
-					<p></p>
-					<p class="text-center"><a href="" class="btn btn-action">更多信息</a></p>
-				</div>
-			</div>
+			<table>
+				<thead>
+				<tr>
+				  <th align="left">博客名</th>
+				  <th align="center">创建时间</th>
+				</tr>
+				</thead>
+				<tbody><tr>
+				  <td align="left"><a href="blogs/Springboot+mybatis服务器搭建教程.html" target="_blank">Springboot+mybatis服务器搭建教程</a></td>
+				  <td align="center">2018年2月27日</td>
+				</tr>
+				<tr>
+				  <td align="left"><a href="blogs/nginx使用手册.html" target="_blank">nginx使用手册</a></td>
+				  <td align="center">2018年2月27日</td>
+				</tr>
+				<tr>
+				  <td align="left"><a href="blogs/apache+php+mysql+phpMyAdmin.html" target="_blank">apache+php+mysql+phpMyAdmin，搭建phpMyAdmin网页版MySQL客户端</a></td>
+				  <td align="center">2018年2月27日</td>
+				</tr>
+				</tbody></table>
 		</div> <!-- / section -->
 	
 		<div class="row section recentworks topspace">
 			
-			<h2 class="section-title"><span>当前工作</span></h2>
+			<h2 class="section-title"><span>我的书单</span></h2>
 			
 			<div class="thumbnails recentworks row">
 				
 				<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-					<a class="thumbnail" href="sidebar-right.html">
+					<a class="thumbnail" href="">
 						<span class="img">
 							<img src="assets/images/jgs.jpg" alt="">
 							<span class="cover"><span class="more">详情 &rarr;</span></span>
@@ -114,7 +118,7 @@
 				</div>
 				
 				<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-					<a class="thumbnail" href="sidebar-right.html">
+					<a class="thumbnail" href="">
 						<span class="img">
 							<img src="assets/images/springboot.jpg" alt="">
 							<span class="cover"><span class="more">详情 &rarr;</span></span>
@@ -171,7 +175,7 @@
 			<div class="col-md-3 widget">
 				<h3 class="widget-title">个人信息</h3>
 				<div class="widget-body">
-					<p>电话保密<br>
+					<p>
 						<a href="mailto:#">930153267@qq.com</a><br>
 						
 					</p>	
